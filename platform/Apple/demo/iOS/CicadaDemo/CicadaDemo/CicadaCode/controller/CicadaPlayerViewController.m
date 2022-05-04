@@ -86,7 +86,6 @@
 
 @property (nonatomic, strong) GPUImageView *customPlayer;
 @property (nonatomic, strong) GPUImageMovieCustom *source;
-@property (nonatomic, strong) GPUImageRawDataInput *rawSource;
 
 @end
 
@@ -116,10 +115,6 @@
     GPUImageSmoothToonFilter *filter = [[GPUImageSmoothToonFilter alloc] init];
     [self.source addTarget:filter];
     [filter addTarget:self.customPlayer];
-    
-    self.rawSource = [[GPUImageRawDataInput alloc] initWithBytes:nil size:CGSizeZero];
-    self.rawSource.pixelFormat = GPUPixelFormatRGB;
-    [self.rawSource addTarget:self.customPlayer];
 
     self.settingAndConfigView = [[CicadaSettingAndConfigView alloc]initWithFrame:CGRectMake(0, self.CicadaView.getMaxY, SCREEN_WIDTH, SCREEN_HEIGHT - self.CicadaView.getMaxY - SAFE_BOTTOM)];
     self.settingAndConfigView.delegate = self;
@@ -865,24 +860,6 @@ tableview点击外挂字幕回调
 {
     CMTime time = CMTimeMakeWithEpoch(pts, 0, 0);
     [self.source processMovieFrame:pixelBuffer withSampleTime:time];
-    return YES;
-}
-
-- (CVPixelBufferRef)applyVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer pts:(int64_t)pts {
-    self.filter.pixelBuffer = pixelBuffer;
-    CVPixelBufferRef outputPixelBuffer = self.filter.outputPixelBuffer;
-    return outputPixelBuffer;
-}
-
-- (BOOL)onRGBVideoRawBuffer:(uint8_t *)buffer lineSize:(int32_t *)lineSize pts:(int64_t)pts width:(int32_t)width height:(int32_t)height
-{
-    CGSize frameSize = CGSizeMake(width, height);
-    [self.rawSource updateDataFromBytes:buffer size:frameSize];
-    CMTime time = CMTimeMakeWithEpoch(pts, 0, 0);
-    [self.rawSource processDataForTimestamp:time];
-    
-    NSLog(@"CicadaRenderDelegate: receive SW frame:%p pts:%lld line0:%d line1:%d line2:%d width:%d, height:%d", buffer, pts,
-          lineSize[0], lineSize[1], lineSize[2], width, height);
     return YES;
 }
 

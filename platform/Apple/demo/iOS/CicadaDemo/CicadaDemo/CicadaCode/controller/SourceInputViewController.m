@@ -48,7 +48,7 @@
     "https://dash.akamaized.net/dash264/TestCases/9b/qualcomm/2/MultiRate.mpd",
      */
     
-    self.URLTextField.text = @"https://cocoplayer.oss-cn-chengdu.aliyuncs.com/videos/DemonicKing/Demonic-King-0-60.mp4";
+    self.URLTextField.text = @"https://cocoplayer.oss-cn-chengdu.aliyuncs.com/videos/DemonicKing/DemonicKing1min_240p.mp4";
     
     // 开发测试用
 //    self.URLTextField.text = @"http://player.alicdn.com/video/aliyunmedia.mp4";
