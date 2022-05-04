@@ -18,6 +18,12 @@
 #import "CicadaErrorModel+string.h"
 #import "AFNetworking.h"
 
+#import "CustomFilter.h"
+#import "GPUImageMovieCustom.h"
+
+#import "CicadaDemo-Swift.h"
+#import <GPUImage.h>
+
 @interface CicadaPlayerViewController ()<CicadaDemoViewDelegate,CicadaSettingAndConfigViewDelegate,CicadaDelegate,CicadaAudioSessionDelegate, CicadaRenderDelegate>
 
 /**
@@ -75,6 +81,13 @@
 */
 @property (nonatomic,assign)BOOL enableMix;
 
+@property (nonatomic, strong) CustomFilter *filter;
+//@property (nonatomic, strong) CVPixelBufferPoolRef *pixelBufferPool;
+
+@property (nonatomic, strong) GPUImageView *customPlayer;
+@property (nonatomic, strong) GPUImageMovieCustom *source;
+@property (nonatomic, strong) GPUImageRawDataInput *rawSource;
+
 @end
 
 @implementation CicadaPlayerViewController
@@ -95,6 +108,17 @@
     self.CicadaView = [[CicadaDemoView alloc]initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT, SCREEN_WIDTH, SCREEN_WIDTH/16*9+44)];
     self.CicadaView.delegate = self;
     [self.view addSubview:self.CicadaView];
+    
+    self.customPlayer = [[GPUImageView alloc] initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT - 100, SCREEN_WIDTH, SCREEN_WIDTH/16*9+44)];
+    [self.view addSubview:self.customPlayer];
+    
+    self.source = [[GPUImageMovieCustom alloc] init];
+    GPUImageSmoothToonFilter *filter = [[GPUImageSmoothToonFilter alloc] init];
+    [self.source addTarget:filter];
+    [filter addTarget:self.customPlayer];
+    
+    self.rawSource = [[GPUImageRawDataInput alloc] initWithBytes:nil size:CGSizeZero];
+    [self.rawSource addTarget:self.customPlayer];
 
     self.settingAndConfigView = [[CicadaSettingAndConfigView alloc]initWithFrame:CGRectMake(0, self.CicadaView.getMaxY, SCREEN_WIDTH, SCREEN_HEIGHT - self.CicadaView.getMaxY - SAFE_BOTTOM)];
     self.settingAndConfigView.delegate = self;
@@ -114,12 +138,12 @@
     self.player.enableHardwareDecoder = [CicadaTool isHardware];
     self.player.playerView = self.CicadaView.playerView;
     self.player.delegate = self;
-    //enable to test render delegate
-//    self.player.renderDelegate = self;
+    self.player.renderDelegate = self;
     self.player.scalingMode = CICADA_SCALINGMODE_SCALEASPECTFIT;
     [self.settingAndConfigView setVolume:self.player.volume/2];
     [self setConfig];
     
+    _filter = [[CustomFilter alloc] init];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChangeFunc) name:UIDeviceOrientationDidChangeNotification object:nil];
@@ -838,15 +862,27 @@ tableview点击外挂字幕回调
 
 - (BOOL)onVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer pts:(int64_t)pts
 {
-    NSLog(@"receive HW frame:%p pts:%lld", pixelBuffer, pts);
-    return NO;
+    CMTime time = CMTimeMakeWithEpoch(pts, 0, 0);
+    [self.source processMovieFrame:pixelBuffer withSampleTime:time];
+    return YES;
 }
 
-- (BOOL)onVideoRawBuffer:(uint8_t **)buffer lineSize:(int32_t *)lineSize pts:(int64_t)pts width:(int32_t)width height:(int32_t)height
+- (CVPixelBufferRef)applyVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer pts:(int64_t)pts {
+    self.filter.pixelBuffer = pixelBuffer;
+    CVPixelBufferRef outputPixelBuffer = self.filter.outputPixelBuffer;
+    return outputPixelBuffer;
+}
+
+- (BOOL)onRGBVideoRawBuffer:(uint8_t *)buffer lineSize:(int32_t *)lineSize pts:(int64_t)pts width:(int32_t)width height:(int32_t)height
 {
-    NSLog(@"receive SW frame:%p pts:%lld line0:%d line1:%d line2:%d width:%d, height:%d", buffer, pts,
+    CGSize frameSize = CGSizeMake(width, height);
+    [self.rawSource updateDataFromBytes:buffer size:frameSize];
+    CMTime time = CMTimeMakeWithEpoch(pts, 0, 0);
+    [self.rawSource processDataForTimestamp:time];
+    
+    NSLog(@"CicadaRenderDelegate: receive SW frame:%p pts:%lld line0:%d line1:%d line2:%d width:%d, height:%d", buffer, pts,
           lineSize[0], lineSize[1], lineSize[2], width, height);
-    return NO;
+    return YES;
 }
 
 @end

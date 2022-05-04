@@ -48,6 +48,15 @@
 		A3E0D1B1446E5EFC1FFA955A /* libPods-CicadaDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D29A7BB5E10D77DE2F09D7 /* libPods-CicadaDemo.a */; };
 		CB46507D24D1E5310065DB1A /* AssetLoaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB46507C24D1E5310065DB1A /* AssetLoaderDelegate.m */; };
 		CB46508024D2757B0065DB1A /* FairplayInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB46507F24D2757B0065DB1A /* FairplayInputViewController.m */; };
+		CBF6175928223832006CEC5A /* MFShaderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF6175428223832006CEC5A /* MFShaderHelper.m */; };
+		CBF6175A28223832006CEC5A /* MFPixelBufferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF6175528223832006CEC5A /* MFPixelBufferHelper.m */; };
+		CBF6175B28223832006CEC5A /* CustomFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF6175628223832006CEC5A /* CustomFilter.m */; };
+		CBF6177228223A2C006CEC5A /* Normal.fsh in Resources */ = {isa = PBXBuildFile; fileRef = CBF6175E28223A2C006CEC5A /* Normal.fsh */; };
+		CBF6177328223A2C006CEC5A /* YUVConversion.fsh in Resources */ = {isa = PBXBuildFile; fileRef = CBF6175F28223A2C006CEC5A /* YUVConversion.fsh */; };
+		CBF6177428223A2C006CEC5A /* Normal.vsh in Resources */ = {isa = PBXBuildFile; fileRef = CBF6176028223A2C006CEC5A /* Normal.vsh */; };
+		CBF6177528223A2C006CEC5A /* YUVConversion.vsh in Resources */ = {isa = PBXBuildFile; fileRef = CBF6176128223A2C006CEC5A /* YUVConversion.vsh */; };
+		CBF6177828223BCE006CEC5A /* CVPixelBufferHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6177728223BCE006CEC5A /* CVPixelBufferHelper.swift */; };
+		CBF6179028227101006CEC5A /* GPUImageMovieCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF6177E28227101006CEC5A /* GPUImageMovieCustom.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +155,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F7561AD2369505B001A5B1E /* CicadaPlayerSDK.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 24FCE1C7CE6048BD9B27E816;
+			remoteGlobalIDString = 7EB9E6C24BA34404A92C0C64;
 			remoteInfo = install;
 		};
 		F3C2D0982620355200CAB6BB /* PBXContainerItemProxy */ = {
@@ -255,6 +264,20 @@
 		CB46507C24D1E5310065DB1A /* AssetLoaderDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetLoaderDelegate.m; sourceTree = "<group>"; };
 		CB46507E24D2757B0065DB1A /* FairplayInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FairplayInputViewController.h; sourceTree = "<group>"; };
 		CB46507F24D2757B0065DB1A /* FairplayInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FairplayInputViewController.m; sourceTree = "<group>"; };
+		CBF6175328223832006CEC5A /* CustomFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFilter.h; sourceTree = "<group>"; };
+		CBF6175428223832006CEC5A /* MFShaderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFShaderHelper.m; sourceTree = "<group>"; };
+		CBF6175528223832006CEC5A /* MFPixelBufferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPixelBufferHelper.m; sourceTree = "<group>"; };
+		CBF6175628223832006CEC5A /* CustomFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFilter.m; sourceTree = "<group>"; };
+		CBF6175728223832006CEC5A /* MFShaderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFShaderHelper.h; sourceTree = "<group>"; };
+		CBF6175828223832006CEC5A /* MFPixelBufferHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPixelBufferHelper.h; sourceTree = "<group>"; };
+		CBF6175E28223A2C006CEC5A /* Normal.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Normal.fsh; sourceTree = "<group>"; };
+		CBF6175F28223A2C006CEC5A /* YUVConversion.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = YUVConversion.fsh; sourceTree = "<group>"; };
+		CBF6176028223A2C006CEC5A /* Normal.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Normal.vsh; sourceTree = "<group>"; };
+		CBF6176128223A2C006CEC5A /* YUVConversion.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = YUVConversion.vsh; sourceTree = "<group>"; };
+		CBF6177628223BCE006CEC5A /* CicadaDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CicadaDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		CBF6177728223BCE006CEC5A /* CVPixelBufferHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPixelBufferHelper.swift; sourceTree = "<group>"; };
+		CBF6177E28227101006CEC5A /* GPUImageMovieCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageMovieCustom.m; sourceTree = "<group>"; };
+		CBF6178F28227101006CEC5A /* GPUImageMovieCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageMovieCustom.h; sourceTree = "<group>"; };
 		D2D29A7BB5E10D77DE2F09D7 /* libPods-CicadaDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CicadaDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC8E51BEE6DE88901BAC16FE /* Pods-CicadaDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CicadaDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CicadaDemo/Pods-CicadaDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -291,6 +314,8 @@
 		186F76E221D71FE4005DC20E /* CicadaCode */ = {
 			isa = PBXGroup;
 			children = (
+				CBF6175D28223A2C006CEC5A /* Shader */,
+				CBF6175228223832006CEC5A /* Utils */,
 				18FE62BA2204305100C260D1 /* common */,
 				18C00E3B21DC59BB00E2861C /* controller */,
 				18C00E4221DC59BC00E2861C /* model */,
@@ -491,6 +516,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CBF6175228223832006CEC5A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CBF6178F28227101006CEC5A /* GPUImageMovieCustom.h */,
+				CBF6177E28227101006CEC5A /* GPUImageMovieCustom.m */,
+				CBF6175328223832006CEC5A /* CustomFilter.h */,
+				CBF6175428223832006CEC5A /* MFShaderHelper.m */,
+				CBF6175528223832006CEC5A /* MFPixelBufferHelper.m */,
+				CBF6175628223832006CEC5A /* CustomFilter.m */,
+				CBF6175728223832006CEC5A /* MFShaderHelper.h */,
+				CBF6175828223832006CEC5A /* MFPixelBufferHelper.h */,
+				CBF6177728223BCE006CEC5A /* CVPixelBufferHelper.swift */,
+				CBF6177628223BCE006CEC5A /* CicadaDemo-Bridging-Header.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CBF6175D28223A2C006CEC5A /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				CBF6175E28223A2C006CEC5A /* Normal.fsh */,
+				CBF6175F28223A2C006CEC5A /* YUVConversion.fsh */,
+				CBF6176028223A2C006CEC5A /* Normal.vsh */,
+				CBF6176128223A2C006CEC5A /* YUVConversion.vsh */,
+			);
+			path = Shader;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -503,6 +556,8 @@
 				18FCB28B21D6126A00289843 /* Frameworks */,
 				18FCB28C21D6126A00289843 /* Resources */,
 				18818E3D225614B000E20011 /* Embed Frameworks */,
+				F3E7CE4802B87772D3058147 /* [CP] Embed Pods Frameworks */,
+				52926F3BACF981E3B3230263 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -543,7 +598,8 @@
 				TargetAttributes = {
 					18FCB28D21D6126A00289843 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 1320;
+						ProvisioningStyle = Manual;
 					};
 					9E2ABC52239FBDE800753787 = {
 						CreatedOnToolsVersion = 11.1;
@@ -688,8 +744,12 @@
 			files = (
 				186F76EC21D71FE4005DC20E /* Assets.xcassets in Resources */,
 				9E38464323BAE66400600660 /* Localizable.strings in Resources */,
+				CBF6177528223A2C006CEC5A /* YUVConversion.vsh in Resources */,
+				CBF6177428223A2C006CEC5A /* Normal.vsh in Resources */,
+				CBF6177328223A2C006CEC5A /* YUVConversion.fsh in Resources */,
 				18C00E3921DC596400E2861C /* source.json in Resources */,
 				186F76ED21D71FE4005DC20E /* LaunchScreen.storyboard in Resources */,
+				CBF6177228223A2C006CEC5A /* Normal.fsh in Resources */,
 				1F052F2623696ACA00A6E842 /* CicadaConfig.json in Resources */,
 				186F76F521D720DB005DC20E /* Main.storyboard in Resources */,
 			);
@@ -705,6 +765,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		52926F3BACF981E3B3230263 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CicadaDemo/Pods-CicadaDemo-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CicadaDemo/Pods-CicadaDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E9D084FFFA6DCB9CAF4823D1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -723,6 +809,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F3E7CE4802B87772D3058147 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CicadaDemo/Pods-CicadaDemo-frameworks.sh",
+				"${PODS_ROOT}/LookinServer/LookinServer.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LookinServer.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CicadaDemo/Pods-CicadaDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -738,8 +842,10 @@
 				186F76F021D71FE4005DC20E /* main.m in Sources */,
 				9EAE8FA423AB212D0026C695 /* CicadaScanViewController.m in Sources */,
 				9E1E270A23617F2600D20487 /* CicadaSlider.m in Sources */,
+				CBF6175928223832006CEC5A /* MFShaderHelper.m in Sources */,
 				184CE9C821E324CB0037C5A2 /* CicadaSettingAndConfigView.m in Sources */,
 				183DC3F821F3202000A9A44B /* CicadaErrorModel+string.m in Sources */,
+				CBF6179028227101006CEC5A /* GPUImageMovieCustom.m in Sources */,
 				18C00E5621DCB05600E2861C /* CicadaBaseViewController.m in Sources */,
 				92717E7C221D365200CE2881 /* CicadaSourceChooserModel.m in Sources */,
 				18CF620621E8475800EB3E97 /* CicadaShowImageView.m in Sources */,
@@ -748,14 +854,17 @@
 				CB46508024D2757B0065DB1A /* FairplayInputViewController.m in Sources */,
 				183ACF9C21E4C4010011B598 /* CicadaConfig+refresh.m in Sources */,
 				1F052F23236963BB00A6E842 /* CicadaDemoView.m in Sources */,
+				CBF6175A28223832006CEC5A /* MFPixelBufferHelper.m in Sources */,
 				186F804A2255E876004DA7BE /* SettingViewController.m in Sources */,
 				184CE9CD21E328050037C5A2 /* CicadaTool.m in Sources */,
 				18C00E4421DC59BC00E2861C /* SourceChooserViewController.m in Sources */,
 				189182A522A7717900096557 /* CicadaCacheConfig+refresh.m in Sources */,
+				CBF6175B28223832006CEC5A /* CustomFilter.m in Sources */,
 				18C00E5921DCB6D800E2861C /* CicadaPlayerViewController.m in Sources */,
 				18C00E4321DC59BC00E2861C /* SourceInputViewController.m in Sources */,
 				186F76F121D71FE4005DC20E /* AppDelegate.m in Sources */,
 				CB46507D24D1E5310065DB1A /* AssetLoaderDelegate.m in Sources */,
+				CBF6177828223BCE006CEC5A /* CVPixelBufferHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,11 +1030,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F3E85725EAE9CEF328AE51A /* Pods-CicadaDemo.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A2YNUJF7T7;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = FLBD7VX6BF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -940,9 +1051,12 @@
 				INFOPLIST_FILE = "$(SRCROOT)/CicadaDemo/AppSupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aliyun.CicadaDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sina.oasis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = oasis_dev;
+				SWIFT_OBJC_BRIDGING_HEADER = "CicadaDemo/CicadaCode/Utils/CicadaDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -951,12 +1065,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FC8E51BEE6DE88901BAC16FE /* Pods-CicadaDemo.release.xcconfig */;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A2YNUJF7T7;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = FLBD7VX6BF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -972,9 +1088,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/CicadaDemo/AppSupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aliyun.CicadaDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sina.oasis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = oasis_dev;
+				SWIFT_OBJC_BRIDGING_HEADER = "CicadaDemo/CicadaCode/Utils/CicadaDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -6,5 +6,7 @@ target 'CicadaDemo' do
     pod 'IQKeyboardManager'
     pod 'MJExtension'
     pod 'MBProgressHUD'
+    pod 'LookinServer', :configurations => ['Debug']
+    pod 'GPUImage'
 end
 

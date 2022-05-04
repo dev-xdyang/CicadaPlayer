@@ -39,6 +39,13 @@ public:
     {
         return mPBuffer;
     }
+    
+    void setPixelBuffer(CVPixelBufferRef buffer)
+    {
+        CVPixelBufferRetain(buffer);
+        CVPixelBufferRelease(mPBuffer);
+        mPBuffer = buffer;
+    }
 
     std::unique_ptr<IAFFrame> clone() override
     {
@@ -47,7 +54,7 @@ public:
 
     explicit operator AVAFFrame *();
 
-private:
+    
     CVPixelBufferRef mPBuffer;
 
 
