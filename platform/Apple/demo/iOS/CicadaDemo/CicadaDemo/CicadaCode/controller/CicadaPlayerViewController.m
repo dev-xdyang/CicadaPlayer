@@ -118,6 +118,7 @@
     [filter addTarget:self.customPlayer];
     
     self.rawSource = [[GPUImageRawDataInput alloc] initWithBytes:nil size:CGSizeZero];
+    self.rawSource.pixelFormat = GPUPixelFormatRGB;
     [self.rawSource addTarget:self.customPlayer];
 
     self.settingAndConfigView = [[CicadaSettingAndConfigView alloc]initWithFrame:CGRectMake(0, self.CicadaView.getMaxY, SCREEN_WIDTH, SCREEN_HEIGHT - self.CicadaView.getMaxY - SAFE_BOTTOM)];
