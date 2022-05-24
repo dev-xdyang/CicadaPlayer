@@ -29,6 +29,11 @@ namespace Cicada {
     {
         return mimeType;
     }
+    
+    void AdaptationSet::clearRepresentations()
+    {
+        mRepresentList.clear();
+    }
 
     AdaptationSet::~AdaptationSet()
     {

@@ -14,6 +14,7 @@
 #include "utils/mediaFrame.h"
 #include <cassert>
 #include <cerrno>
+#include <set>
 
 #undef LOG_TAG
 #define LOG_TAG "DashManager"
@@ -568,10 +569,20 @@ int64_t DashManager::getTargetDuration()
     return mPList->maxSegmentDuration;
 }
 
+bool DashManager_representCompare(Representation *r1, Representation *r2) {
+    int height1; int height2; std::string temp;
+    r1->getStreamInfo(NULL, &height1, NULL, temp);
+    r2->getStreamInfo(NULL, &height2, NULL, temp);
+    return height1 < height2;
+}
+
 std::list<AdaptationSet *> DashManager::FindSuitableAdaptationSets(Period* period)
 {
     std::list<AdaptationSet *> &adaptSetList = period->GetAdaptSets();
-    AdaptationSet *suitableVideo = nullptr;
+    std::list<Representation *> mRepresentList;
+    AdaptationSet *suitableVideo = new AdaptationSet(period); // 为了获取到所有分辨率视频，新建一个
+    period->addAdaptationSet(suitableVideo);
+    std::set<int> inserted;
     AdaptationSet *suitableAudio = nullptr;
 
     for (auto &ait : adaptSetList) {
@@ -586,10 +597,16 @@ std::list<AdaptationSet *> DashManager::FindSuitableAdaptationSets(Period* perio
             }
         }
         if (mimeType == "video/mp4") {
-            if (suitableVideo) {
-                continue;
+            for (auto represent : representList) { // 尝试添加所有的视频轨道
+                // 相同比例视频去重
+                int height; std::string temp;
+                represent->getStreamInfo(NULL, &height, NULL, temp);
+                if (inserted.count(height) > 0) { continue; }
+                inserted.insert(height);
+                
+                mRepresentList.push_back(represent);
+                ait->clearRepresentations();
             }
-            suitableVideo = ait;
         } else if (mimeType == "audio/mp4") {
             if (suitableAudio) {
                 continue;
@@ -598,6 +615,13 @@ std::list<AdaptationSet *> DashManager::FindSuitableAdaptationSets(Period* perio
         }
         // TODO: subtitle
     }
+    
+    // 根据分辨率排序
+    mRepresentList.sort(DashManager_representCompare);
+    for (auto represent : mRepresentList) {
+        suitableVideo->addRepresentation(represent);
+    }
+    
     std::list<AdaptationSet *> ret;
     if (suitableVideo) {
         ret.push_back(suitableVideo);

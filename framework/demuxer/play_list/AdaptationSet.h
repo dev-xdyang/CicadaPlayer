@@ -41,6 +41,8 @@ namespace Cicada{
         }
 
         void print();
+        
+        void clearRepresentations();
 
         const std::string &getMimeType() const;
 
